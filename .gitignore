@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+coverage/
+
+# Secrets: never commit real env files, but do commit the template
+.env
+.env.*
+!.env.example
+
+# SQLite database files (generated locally)
+*.db
+*.db-journal
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test reports
+playwright-report/
+test-results/
+
+# Claude Code: personal, machine-only settings
+.claude/settings.local.json
+CLAUDE.local.md
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.DS_Store
+Thumbs.db
