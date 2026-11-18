@@ -9,13 +9,14 @@ move/rotate it, and save/load layouts.
   Three Fiber), Tailwind CSS for UI panels.
 - **API (`apps/api`)**: Node, Express, TypeScript, Prisma ORM, SQLite.
 - **Tests**: Vitest (unit), Supertest (API), Playwright (end-to-end).
-- npm workspaces. Use `npm`, never yarn or pnpm.
+- Use `npm`, never yarn or pnpm. Each app has its own package.json.
 
-## Commands (run from repo root)
+## Commands
 
-- `npm run dev` – start web (5173) and API (4000)
-- `npm test` – run all tests
-- `npm run lint` – ESLint + type check
+Web app (run inside `apps/web`):
+
+- `npm run dev` – start the dev server on http://localhost:5173
+- `npm run build` – type check and build
 
 ## Structure
 
