@@ -11,11 +11,18 @@
     >
       3D Room Planner
     </header>
-    <main
-      id="viewport"
-      class="flex-1 min-h-0 relative"
-      aria-label="3D view of the room"
-    ></main>
+    <div class="flex flex-1 min-h-0">
+      <aside
+        id="catalog-panel"
+        class="w-48 shrink-0 bg-white border-r border-slate-200 p-4 overflow-y-auto"
+        aria-label="Furniture Catalog"
+      ></aside>
+      <main
+        id="viewport"
+        class="flex-1 min-h-0 relative"
+        aria-label="3D view of the room"
+      ></main>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
