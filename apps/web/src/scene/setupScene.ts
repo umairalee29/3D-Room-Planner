@@ -23,27 +23,35 @@ export function setupScene(container: HTMLElement): SceneContext {
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFShadowMap;
   container.appendChild(renderer.domElement);
 
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
-  controls.target.set(0, 0, 0);
+  controls.target.set(0, 1, 0);
   controls.minDistance = 2;
   controls.maxDistance = 20;
   controls.maxPolarAngle = Math.PI / 2 - 0.05;
 
-  const hemisphereLight = new THREE.HemisphereLight("#ffffff", "#8d8d8d", 1.5);
+  const hemisphereLight = new THREE.HemisphereLight("#ffffff", "#8d8d8d", 1);
   scene.add(hemisphereLight);
 
   const sun = new THREE.DirectionalLight("#ffffff", 2);
-  sun.position.set(5, 10, 5);
+  sun.position.set(6, 8, 1);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(2048, 2048);
+  sun.shadow.camera.left = -6;
+  sun.shadow.camera.right = 6;
+  sun.shadow.camera.top = 6;
+  sun.shadow.camera.bottom = -6;
   scene.add(sun);
 
   const resizeObserver = new ResizeObserver(() => {
     const width = container.clientWidth;
     const height = container.clientHeight;
     camera.aspect = width / height;
-    camera.updateProjectionMatrix();
+    camera.updateProjectionMatrix(); // Must be called after changing the aspect ration or camera settings
     renderer.setSize(width, height);
   });
 
